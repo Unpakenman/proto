@@ -1,4 +1,4 @@
-module proto
+module github.com/Unpakenman/proto
 
 go 1.25.1
 
