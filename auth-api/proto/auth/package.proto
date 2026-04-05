@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+package proto.sso;
+option go_package = "github.com/Unpakenman/proto/auth/gen/go/auth";
+
+import "auth/rpc/register.proto";
+
+
+service Clinics {
+  rpc Register(proto.auth.rpc.RegisterRequest) returns (proto.auth.rpc.RegisterResponse);
+}

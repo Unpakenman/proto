@@ -1,0 +1,7 @@
+syntax = "proto3";
+
+package proto.sso.errors;
+option go_package = "github.com/Unpakenman/proto/auth/gen/go/auth/errors";
+
+message UserAlreadyExist{
+}

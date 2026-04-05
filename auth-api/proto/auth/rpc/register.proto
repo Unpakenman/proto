@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+package proto.auth.rpc;
+option go_package = "github.com/Unpakenman/proto/auth/gen/go/auth/rpc";
+
+message RegisterRequest{
+  //phone_number
+  string phone_number = 1;
+  //email
+  string email = 2;
+  //password
+  string password = 3;
+  //is_amployee
+  bool is_amployee = 4;
+}
+message RegisterResponse{
+}
