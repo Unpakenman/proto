@@ -25,8 +25,8 @@ var File_auth_package_proto protoreflect.FileDescriptor
 
 const file_auth_package_proto_rawDesc = "" +
 	"\n" +
-	"\x12auth/package.proto\x12\tproto.sso\x1a\x17auth/rpc/register.proto2X\n" +
-	"\aClinics\x12M\n" +
+	"\x12auth/package.proto\x12\tproto.sso\x1a\x17auth/rpc/register.proto2U\n" +
+	"\x04Auth\x12M\n" +
 	"\bRegister\x12\x1f.proto.auth.rpc.RegisterRequest\x1a .proto.auth.rpc.RegisterResponseB.Z,github.com/Unpakenman/proto/auth/gen/go/authb\x06proto3"
 
 var file_auth_package_proto_goTypes = []any{
@@ -34,8 +34,8 @@ var file_auth_package_proto_goTypes = []any{
 	(*rpc.RegisterResponse)(nil), // 1: proto.auth.rpc.RegisterResponse
 }
 var file_auth_package_proto_depIdxs = []int32{
-	0, // 0: proto.sso.Clinics.Register:input_type -> proto.auth.rpc.RegisterRequest
-	1, // 1: proto.sso.Clinics.Register:output_type -> proto.auth.rpc.RegisterResponse
+	0, // 0: proto.sso.Auth.Register:input_type -> proto.auth.rpc.RegisterRequest
+	1, // 1: proto.sso.Auth.Register:output_type -> proto.auth.rpc.RegisterResponse
 	1, // [1:2] is the sub-list for method output_type
 	0, // [0:1] is the sub-list for method input_type
 	0, // [0:0] is the sub-list for extension type_name
