@@ -8,7 +8,7 @@ package auth
 
 import (
 	context "context"
-	rpc "github.com/Unpakenman/proto/auth/gen/go/auth/rpc"
+	rpc "github.com/Unpakenman/proto/auth-api/gen/go/auth/rpc"
 	grpc "google.golang.org/grpc"
 	codes "google.golang.org/grpc/codes"
 	status "google.golang.org/grpc/status"

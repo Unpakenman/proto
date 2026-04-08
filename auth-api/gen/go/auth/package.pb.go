@@ -7,7 +7,7 @@
 package auth
 
 import (
-	rpc "github.com/Unpakenman/proto/auth/gen/go/auth/rpc"
+	rpc "github.com/Unpakenman/proto/auth-api/gen/go/auth/rpc"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	reflect "reflect"
@@ -27,7 +27,7 @@ const file_auth_package_proto_rawDesc = "" +
 	"\n" +
 	"\x12auth/package.proto\x12\tproto.sso\x1a\x17auth/rpc/register.proto2U\n" +
 	"\x04Auth\x12M\n" +
-	"\bRegister\x12\x1f.proto.auth.rpc.RegisterRequest\x1a .proto.auth.rpc.RegisterResponseB.Z,github.com/Unpakenman/proto/auth/gen/go/authb\x06proto3"
+	"\bRegister\x12\x1f.proto.auth.rpc.RegisterRequest\x1a .proto.auth.rpc.RegisterResponseB2Z0github.com/Unpakenman/proto/auth-api/gen/go/authb\x06proto3"
 
 var file_auth_package_proto_goTypes = []any{
 	(*rpc.RegisterRequest)(nil),  // 0: proto.auth.rpc.RegisterRequest

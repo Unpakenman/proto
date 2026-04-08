@@ -62,7 +62,7 @@ var File_auth_common_errors_proto protoreflect.FileDescriptor
 const file_auth_common_errors_proto_rawDesc = "" +
 	"\n" +
 	"\x18auth/common/errors.proto\x12\x10proto.sso.errors\"\x12\n" +
-	"\x10UserAlreadyExistB5Z3github.com/Unpakenman/proto/auth/gen/go/auth/errorsb\x06proto3"
+	"\x10UserAlreadyExistB9Z7github.com/Unpakenman/proto/auth-api/gen/go/auth/errorsb\x06proto3"
 
 var (
 	file_auth_common_errors_proto_rawDescOnce sync.Once

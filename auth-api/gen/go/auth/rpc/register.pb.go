@@ -140,7 +140,7 @@ const file_auth_rpc_register_proto_rawDesc = "" +
 	"\bpassword\x18\x03 \x01(\tR\bpassword\x12\x1f\n" +
 	"\vis_amployee\x18\x04 \x01(\bR\n" +
 	"isAmployee\"\x12\n" +
-	"\x10RegisterResponseB2Z0github.com/Unpakenman/proto/auth/gen/go/auth/rpcb\x06proto3"
+	"\x10RegisterResponseB6Z4github.com/Unpakenman/proto/auth-api/gen/go/auth/rpcb\x06proto3"
 
 var (
 	file_auth_rpc_register_proto_rawDescOnce sync.Once
