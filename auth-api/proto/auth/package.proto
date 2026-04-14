@@ -10,5 +10,4 @@ import "auth/rpc/login.proto";
 service Auth {
   rpc Register(proto.auth.rpc.RegisterRequest) returns (proto.auth.rpc.RegisterResponse);
   rpc Login(proto.auth.rpc.LoginRequest) returns (proto.auth.rpc.LoginResponse);
-
 }
