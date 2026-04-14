@@ -1,0 +1,19 @@
+syntax = "proto3";
+
+package proto.auth.rpc;
+option go_package = "github.com/Unpakenman/proto/auth-api/gen/go/auth/rpc";
+
+message LoginRequest{
+  //phone_number
+  string phone_number = 1;
+  //password
+  string password = 2;
+  //is_amployee
+  bool is_amployee = 3;
+}
+message LoginResponse{
+  //token
+  string token = 1;
+  //refresh_token
+  string refresh_token = 2;
+}

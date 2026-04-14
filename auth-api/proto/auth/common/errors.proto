@@ -5,3 +5,5 @@ option go_package = "github.com/Unpakenman/proto/auth-api/gen/go/auth/errors";
 
 message UserAlreadyExist{
 }
+ message UserNotFound{
+ }

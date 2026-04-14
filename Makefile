@@ -12,6 +12,7 @@ run: ## generate proto code project
         --go-grpc_opt=require_unimplemented_servers=false \
         auth-api/proto/auth/package.proto \
         auth-api/proto/auth/rpc/register.proto \
+        auth-api/proto/auth/rpc/login.proto \
         auth-api/proto/auth/common/errors.proto
 
 
