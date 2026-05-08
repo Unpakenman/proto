@@ -20,8 +20,9 @@ import (
 const _ = grpc.SupportPackageIsVersion9
 
 const (
-	Auth_Register_FullMethodName = "/proto.sso.Auth/Register"
-	Auth_Login_FullMethodName    = "/proto.sso.Auth/Login"
+	Auth_Register_FullMethodName     = "/proto.sso.Auth/Register"
+	Auth_Login_FullMethodName        = "/proto.sso.Auth/Login"
+	Auth_RefreshToken_FullMethodName = "/proto.sso.Auth/RefreshToken"
 )
 
 // AuthClient is the client API for Auth service.
@@ -30,6 +31,7 @@ const (
 type AuthClient interface {
 	Register(ctx context.Context, in *rpc.RegisterRequest, opts ...grpc.CallOption) (*rpc.RegisterResponse, error)
 	Login(ctx context.Context, in *rpc.LoginRequest, opts ...grpc.CallOption) (*rpc.LoginResponse, error)
+	RefreshToken(ctx context.Context, in *rpc.RefreshAccessTokenRequest, opts ...grpc.CallOption) (*rpc.RefreshAccessTokenResponse, error)
 }
 
 type authClient struct {
@@ -60,12 +62,23 @@ func (c *authClient) Login(ctx context.Context, in *rpc.LoginRequest, opts ...gr
 	return out, nil
 }
 
+func (c *authClient) RefreshToken(ctx context.Context, in *rpc.RefreshAccessTokenRequest, opts ...grpc.CallOption) (*rpc.RefreshAccessTokenResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(rpc.RefreshAccessTokenResponse)
+	err := c.cc.Invoke(ctx, Auth_RefreshToken_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // AuthServer is the server API for Auth service.
 // All implementations should embed UnimplementedAuthServer
 // for forward compatibility.
 type AuthServer interface {
 	Register(context.Context, *rpc.RegisterRequest) (*rpc.RegisterResponse, error)
 	Login(context.Context, *rpc.LoginRequest) (*rpc.LoginResponse, error)
+	RefreshToken(context.Context, *rpc.RefreshAccessTokenRequest) (*rpc.RefreshAccessTokenResponse, error)
 }
 
 // UnimplementedAuthServer should be embedded to have
@@ -80,6 +93,9 @@ func (UnimplementedAuthServer) Register(context.Context, *rpc.RegisterRequest) (
 }
 func (UnimplementedAuthServer) Login(context.Context, *rpc.LoginRequest) (*rpc.LoginResponse, error) {
 	return nil, status.Error(codes.Unimplemented, "method Login not implemented")
+}
+func (UnimplementedAuthServer) RefreshToken(context.Context, *rpc.RefreshAccessTokenRequest) (*rpc.RefreshAccessTokenResponse, error) {
+	return nil, status.Error(codes.Unimplemented, "method RefreshToken not implemented")
 }
 func (UnimplementedAuthServer) testEmbeddedByValue() {}
 
@@ -137,6 +153,24 @@ func _Auth_Login_Handler(srv interface{}, ctx context.Context, dec func(interfac
 	return interceptor(ctx, in, info, handler)
 }
 
+func _Auth_RefreshToken_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(rpc.RefreshAccessTokenRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(AuthServer).RefreshToken(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: Auth_RefreshToken_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(AuthServer).RefreshToken(ctx, req.(*rpc.RefreshAccessTokenRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // Auth_ServiceDesc is the grpc.ServiceDesc for Auth service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -151,6 +185,10 @@ var Auth_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "Login",
 			Handler:    _Auth_Login_Handler,
+		},
+		{
+			MethodName: "RefreshToken",
+			Handler:    _Auth_RefreshToken_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

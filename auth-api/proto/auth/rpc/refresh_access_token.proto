@@ -1,0 +1,19 @@
+syntax = "proto3";
+
+package proto.auth.rpc;
+option go_package = "github.com/Unpakenman/proto/auth-api/gen/go/auth/rpc";
+
+message RefreshAccessTokenRequest{
+  //token
+  string token = 1;
+  //refresh_token
+  string refresh_token = 2;
+}
+message RefreshAccessTokenResponse{
+  //token
+  string token = 1;
+  //refresh_token
+  string refresh_token = 2;
+}
+
+
