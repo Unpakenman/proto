@@ -14,6 +14,7 @@ run: ## generate proto code project
         auth-api/proto/auth/rpc/register.proto \
         auth-api/proto/auth/rpc/login.proto \
         auth-api/proto/auth/rpc/refresh_access_token.proto \
+        auth-api/proto/auth/rpc/logout.proto \
         auth-api/proto/auth/common/errors.proto
 
 

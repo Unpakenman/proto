@@ -6,10 +6,12 @@ option go_package = "github.com/Unpakenman/proto/auth-api/gen/go/auth";
 import "auth/rpc/register.proto";
 import "auth/rpc/login.proto";
 import "auth/rpc/refresh_access_token.proto";
+import "auth/rpc/logout.proto";
 
 
 service Auth {
   rpc Register(proto.auth.rpc.RegisterRequest) returns (proto.auth.rpc.RegisterResponse);
   rpc Login(proto.auth.rpc.LoginRequest) returns (proto.auth.rpc.LoginResponse);
   rpc RefreshToken(proto.auth.rpc.RefreshAccessTokenRequest) returns (proto.auth.rpc.RefreshAccessTokenResponse);
+  rpc Logout(proto.auth.rpc.LogoutRequest)  returns (proto.auth.rpc.LogoutResponse);
 }
