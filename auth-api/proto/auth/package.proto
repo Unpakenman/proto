@@ -7,6 +7,7 @@ import "auth/rpc/register.proto";
 import "auth/rpc/login.proto";
 import "auth/rpc/refresh_access_token.proto";
 import "auth/rpc/logout.proto";
+import "auth/rpc/get_user_info.proto";
 
 
 service Auth {
@@ -14,4 +15,5 @@ service Auth {
   rpc Login(proto.auth.rpc.LoginRequest) returns (proto.auth.rpc.LoginResponse);
   rpc RefreshToken(proto.auth.rpc.RefreshAccessTokenRequest) returns (proto.auth.rpc.RefreshAccessTokenResponse);
   rpc Logout(proto.auth.rpc.LogoutRequest)  returns (proto.auth.rpc.LogoutResponse);
+  rpc GetUserInfo(proto.auth.rpc.GetUserInfoRequest) returns (proto.auth.rpc.GetUserInfoResponse);
 }

@@ -24,6 +24,7 @@ const (
 	Auth_Login_FullMethodName        = "/proto.sso.Auth/Login"
 	Auth_RefreshToken_FullMethodName = "/proto.sso.Auth/RefreshToken"
 	Auth_Logout_FullMethodName       = "/proto.sso.Auth/Logout"
+	Auth_GetUserInfo_FullMethodName  = "/proto.sso.Auth/GetUserInfo"
 )
 
 // AuthClient is the client API for Auth service.
@@ -34,6 +35,7 @@ type AuthClient interface {
 	Login(ctx context.Context, in *rpc.LoginRequest, opts ...grpc.CallOption) (*rpc.LoginResponse, error)
 	RefreshToken(ctx context.Context, in *rpc.RefreshAccessTokenRequest, opts ...grpc.CallOption) (*rpc.RefreshAccessTokenResponse, error)
 	Logout(ctx context.Context, in *rpc.LogoutRequest, opts ...grpc.CallOption) (*rpc.LogoutResponse, error)
+	GetUserInfo(ctx context.Context, in *rpc.GetUserInfoRequest, opts ...grpc.CallOption) (*rpc.GetUserInfoResponse, error)
 }
 
 type authClient struct {
@@ -84,6 +86,16 @@ func (c *authClient) Logout(ctx context.Context, in *rpc.LogoutRequest, opts ...
 	return out, nil
 }
 
+func (c *authClient) GetUserInfo(ctx context.Context, in *rpc.GetUserInfoRequest, opts ...grpc.CallOption) (*rpc.GetUserInfoResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(rpc.GetUserInfoResponse)
+	err := c.cc.Invoke(ctx, Auth_GetUserInfo_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // AuthServer is the server API for Auth service.
 // All implementations should embed UnimplementedAuthServer
 // for forward compatibility.
@@ -92,6 +104,7 @@ type AuthServer interface {
 	Login(context.Context, *rpc.LoginRequest) (*rpc.LoginResponse, error)
 	RefreshToken(context.Context, *rpc.RefreshAccessTokenRequest) (*rpc.RefreshAccessTokenResponse, error)
 	Logout(context.Context, *rpc.LogoutRequest) (*rpc.LogoutResponse, error)
+	GetUserInfo(context.Context, *rpc.GetUserInfoRequest) (*rpc.GetUserInfoResponse, error)
 }
 
 // UnimplementedAuthServer should be embedded to have
@@ -112,6 +125,9 @@ func (UnimplementedAuthServer) RefreshToken(context.Context, *rpc.RefreshAccessT
 }
 func (UnimplementedAuthServer) Logout(context.Context, *rpc.LogoutRequest) (*rpc.LogoutResponse, error) {
 	return nil, status.Error(codes.Unimplemented, "method Logout not implemented")
+}
+func (UnimplementedAuthServer) GetUserInfo(context.Context, *rpc.GetUserInfoRequest) (*rpc.GetUserInfoResponse, error) {
+	return nil, status.Error(codes.Unimplemented, "method GetUserInfo not implemented")
 }
 func (UnimplementedAuthServer) testEmbeddedByValue() {}
 
@@ -205,6 +221,24 @@ func _Auth_Logout_Handler(srv interface{}, ctx context.Context, dec func(interfa
 	return interceptor(ctx, in, info, handler)
 }
 
+func _Auth_GetUserInfo_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(rpc.GetUserInfoRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(AuthServer).GetUserInfo(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: Auth_GetUserInfo_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(AuthServer).GetUserInfo(ctx, req.(*rpc.GetUserInfoRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // Auth_ServiceDesc is the grpc.ServiceDesc for Auth service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -227,6 +261,10 @@ var Auth_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "Logout",
 			Handler:    _Auth_Logout_Handler,
+		},
+		{
+			MethodName: "GetUserInfo",
+			Handler:    _Auth_GetUserInfo_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

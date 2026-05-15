@@ -1,0 +1,20 @@
+syntax = "proto3";
+
+package proto.auth.rpc;
+option go_package = "github.com/Unpakenman/proto/auth-api/gen/go/auth/rpc";
+
+message GetUserInfoRequest{
+  //user_id
+  string user_id = 1;
+}
+
+message GetUserInfoResponse{
+  //phone
+  string phone = 1;
+  //email
+  string email = 2;
+  //is_employee
+  bool is_employee = 3;
+  //role
+  string role = 4;
+}

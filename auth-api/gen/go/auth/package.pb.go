@@ -25,34 +25,39 @@ var File_auth_package_proto protoreflect.FileDescriptor
 
 const file_auth_package_proto_rawDesc = "" +
 	"\n" +
-	"\x12auth/package.proto\x12\tproto.sso\x1a\x17auth/rpc/register.proto\x1a\x14auth/rpc/login.proto\x1a#auth/rpc/refresh_access_token.proto\x1a\x15auth/rpc/logout.proto2\xcb\x02\n" +
+	"\x12auth/package.proto\x12\tproto.sso\x1a\x17auth/rpc/register.proto\x1a\x14auth/rpc/login.proto\x1a#auth/rpc/refresh_access_token.proto\x1a\x15auth/rpc/logout.proto\x1a\x1cauth/rpc/get_user_info.proto2\xa3\x03\n" +
 	"\x04Auth\x12M\n" +
 	"\bRegister\x12\x1f.proto.auth.rpc.RegisterRequest\x1a .proto.auth.rpc.RegisterResponse\x12D\n" +
 	"\x05Login\x12\x1c.proto.auth.rpc.LoginRequest\x1a\x1d.proto.auth.rpc.LoginResponse\x12e\n" +
 	"\fRefreshToken\x12).proto.auth.rpc.RefreshAccessTokenRequest\x1a*.proto.auth.rpc.RefreshAccessTokenResponse\x12G\n" +
-	"\x06Logout\x12\x1d.proto.auth.rpc.LogoutRequest\x1a\x1e.proto.auth.rpc.LogoutResponseB2Z0github.com/Unpakenman/proto/auth-api/gen/go/authb\x06proto3"
+	"\x06Logout\x12\x1d.proto.auth.rpc.LogoutRequest\x1a\x1e.proto.auth.rpc.LogoutResponse\x12V\n" +
+	"\vGetUserInfo\x12\".proto.auth.rpc.GetUserInfoRequest\x1a#.proto.auth.rpc.GetUserInfoResponseB2Z0github.com/Unpakenman/proto/auth-api/gen/go/authb\x06proto3"
 
 var file_auth_package_proto_goTypes = []any{
 	(*rpc.RegisterRequest)(nil),            // 0: proto.auth.rpc.RegisterRequest
 	(*rpc.LoginRequest)(nil),               // 1: proto.auth.rpc.LoginRequest
 	(*rpc.RefreshAccessTokenRequest)(nil),  // 2: proto.auth.rpc.RefreshAccessTokenRequest
 	(*rpc.LogoutRequest)(nil),              // 3: proto.auth.rpc.LogoutRequest
-	(*rpc.RegisterResponse)(nil),           // 4: proto.auth.rpc.RegisterResponse
-	(*rpc.LoginResponse)(nil),              // 5: proto.auth.rpc.LoginResponse
-	(*rpc.RefreshAccessTokenResponse)(nil), // 6: proto.auth.rpc.RefreshAccessTokenResponse
-	(*rpc.LogoutResponse)(nil),             // 7: proto.auth.rpc.LogoutResponse
+	(*rpc.GetUserInfoRequest)(nil),         // 4: proto.auth.rpc.GetUserInfoRequest
+	(*rpc.RegisterResponse)(nil),           // 5: proto.auth.rpc.RegisterResponse
+	(*rpc.LoginResponse)(nil),              // 6: proto.auth.rpc.LoginResponse
+	(*rpc.RefreshAccessTokenResponse)(nil), // 7: proto.auth.rpc.RefreshAccessTokenResponse
+	(*rpc.LogoutResponse)(nil),             // 8: proto.auth.rpc.LogoutResponse
+	(*rpc.GetUserInfoResponse)(nil),        // 9: proto.auth.rpc.GetUserInfoResponse
 }
 var file_auth_package_proto_depIdxs = []int32{
 	0, // 0: proto.sso.Auth.Register:input_type -> proto.auth.rpc.RegisterRequest
 	1, // 1: proto.sso.Auth.Login:input_type -> proto.auth.rpc.LoginRequest
 	2, // 2: proto.sso.Auth.RefreshToken:input_type -> proto.auth.rpc.RefreshAccessTokenRequest
 	3, // 3: proto.sso.Auth.Logout:input_type -> proto.auth.rpc.LogoutRequest
-	4, // 4: proto.sso.Auth.Register:output_type -> proto.auth.rpc.RegisterResponse
-	5, // 5: proto.sso.Auth.Login:output_type -> proto.auth.rpc.LoginResponse
-	6, // 6: proto.sso.Auth.RefreshToken:output_type -> proto.auth.rpc.RefreshAccessTokenResponse
-	7, // 7: proto.sso.Auth.Logout:output_type -> proto.auth.rpc.LogoutResponse
-	4, // [4:8] is the sub-list for method output_type
-	0, // [0:4] is the sub-list for method input_type
+	4, // 4: proto.sso.Auth.GetUserInfo:input_type -> proto.auth.rpc.GetUserInfoRequest
+	5, // 5: proto.sso.Auth.Register:output_type -> proto.auth.rpc.RegisterResponse
+	6, // 6: proto.sso.Auth.Login:output_type -> proto.auth.rpc.LoginResponse
+	7, // 7: proto.sso.Auth.RefreshToken:output_type -> proto.auth.rpc.RefreshAccessTokenResponse
+	8, // 8: proto.sso.Auth.Logout:output_type -> proto.auth.rpc.LogoutResponse
+	9, // 9: proto.sso.Auth.GetUserInfo:output_type -> proto.auth.rpc.GetUserInfoResponse
+	5, // [5:10] is the sub-list for method output_type
+	0, // [0:5] is the sub-list for method input_type
 	0, // [0:0] is the sub-list for extension type_name
 	0, // [0:0] is the sub-list for extension extendee
 	0, // [0:0] is the sub-list for field type_name
